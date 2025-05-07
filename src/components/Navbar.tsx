@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import PricingSection from "./PricingSection";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,7 @@ const Navbar = () => {
             <a href="#lessons" className="text-white hover:text-gold transition-colors">Business Lessons</a>
             <a href="#about" className="text-white hover:text-gold transition-colors">About Host</a>
             <a href="#pricing" className="text-white hover:text-gold transition-colors">Pricing</a>
-            <Button className="btn-primary">CLAIM MY SEAT</Button>
+            <a href="#pricing" className="btn-primary">CLAIM MY SEAT</a>
           </div>
           
           <div className="md:hidden">
