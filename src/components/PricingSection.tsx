@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 
 const PricingOption = ({ title, price, discountPrice, features, isPopular = false }: { 
@@ -36,9 +35,11 @@ const PricingOption = ({ title, price, discountPrice, features, isPopular = fals
             </li>
           ))}
         </ul>
-        <Button className={`w-full ${isPopular ? 'btn-primary' : 'bg-navy text-white hover:bg-navy-light'}`}>
-          CLAIM MY SEAT
-        </Button>
+        <a href="https://pay.gtextglobal.com/singapore-retreat-for/" target="_blank" rel="noopener noreferrer">
+          <Button className={`w-full ${isPopular ? 'btn-primary' : 'bg-navy text-white hover:bg-navy-light'}`}>
+            CLAIM MY SEAT
+          </Button>
+        </a>
       </div>
     </div>
   );
@@ -100,9 +101,11 @@ const PricingSection = () => {
           <p className="text-lg font-medium mb-4">
             Thousands of people will see this daily, and spots will fill up fast!
           </p>
-          <Button className="btn-primary text-lg">
-            CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
-          </Button>
+          <a href="https://pay.gtextglobal.com/singapore-retreat-for/" target="_blank" rel="noopener noreferrer">
+            <Button className="btn-primary text-lg">
+              CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
+            </Button>
+          </a>
         </div>
       </div>
     </div>

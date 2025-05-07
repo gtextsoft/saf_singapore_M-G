@@ -41,9 +41,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors">LinkedIn</a>
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors">Twitter</a>
-              <a href="#" className="text-gray-300 hover:text-gold transition-colors">Instagram</a>
+              <a href="https://ng.linkedin.com/company/stephenakintayo" className="text-gray-300 hover:text-gold transition-colors">LinkedIn</a>
+              <a href="https://www.instagram.com/stephenakintayo/?hl=en" className="text-gray-300 hover:text-gold transition-colors">Twitter</a>
+              <a href="https://www.instagram.com/stephenakintayo/?hl=en" className="text-gray-300 hover:text-gold transition-colors">Instagram</a>
             </div>
           </div>
         </div>
