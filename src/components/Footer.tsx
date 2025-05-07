@@ -24,7 +24,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>Email: products@stephenakintayo.com</li>
-              <li>Phone: +1 (234) 567-8900</li>
+              <li>Phone: +234 (816) 790-1719</li>
             </ul>
           </div>
           
