@@ -58,9 +58,9 @@ const PricingSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <PricingOption 
-            title="Individual" 
-            price="2000" 
-            discountPrice="1500"
+            title="Economy (Early Bird)" 
+            price="7000" 
+            discountPrice="5000"
             isPopular={true}
             features={[
               "Premium accommodation in Singapore",
@@ -68,37 +68,55 @@ const PricingSection = () => {
               "Access to all workshops",
               "Personal business assessment",
               "Networking opportunities",
-              "Action plan to scale your business"
+              "Action plan to scale your business",
+              "Early Bird registration closes July 30th, 2025"
             ]}
           />
           <PricingOption 
-            title="Couples" 
-            price="3000" 
-            features={[
-              "Premium accommodation in Singapore",
-              "All meals included",
-              "Access to all workshops for both",
-              "2 Personal business assessments",
-              "Networking opportunities",
-              "Action plans to scale your businesses"
-            ]}
-          />
-          <PricingOption 
-            title="Standard (Later)" 
-            price="2000" 
+            title="Economy (Regular)" 
+            price="7000" 
             features={[
               "Premium accommodation in Singapore",
               "All meals included",
               "Access to all workshops",
               "Personal business assessment",
               "Networking opportunities",
-              "Action plan to scale your business"
+              "Action plan to scale your business",
+              "Registration effective from August 1st, closes September 25th, 2025"
+            ]}
+          />
+          <PricingOption 
+            title="Business Class (Early Bird)" 
+            price="15000" 
+            discountPrice="12000"
+            features={[
+              "Business Class accommodation in Singapore",
+              "All meals included",
+              "Access to all workshops",
+              "Personal business assessment",
+              "Exclusive networking opportunities",
+              "VIP action plan to scale your business",
+              "Early Bird registration closes July 30th, 2025"
+            ]}
+          />
+          <PricingOption 
+            title="Business Class (Regular)" 
+            price="15000" 
+            features={[
+              "Business Class accommodation in Singapore",
+              "All meals included",
+              "Access to all workshops",
+              "Personal business assessment",
+              "Exclusive networking opportunities",
+              "VIP action plan to scale your business",
+              "Registration effective from August 1st, closes September 25th, 2025"
             ]}
           />
         </div>
         
         <div className="text-center mt-10">
           <p className="text-lg font-medium mb-4">
+            Early Bird registration ends July 30th, 2025. Entire event registration closes September 25th, 2025.<br/>
             Thousands of people will see this daily, and spots will fill up fast!
           </p>
           <a href="https://pay.gtextglobal.com/singapore-retreat-for/" target="_blank" rel="noopener noreferrer">
