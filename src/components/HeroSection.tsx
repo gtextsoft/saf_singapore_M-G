@@ -18,7 +18,7 @@ const HeroSection = () => {
           CLAIM MY SEAT NOW
         </Button>
         <p className="mt-6 text-sm opacity-75 animate-fade-in">
-          October 13-19, 2025 | Limited Spots Available
+          November 28 to December 4, 2025 | Limited Spots Available
         </p>
       </div>
     </div>
