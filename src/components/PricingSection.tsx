@@ -56,7 +56,7 @@ const PricingSection = () => {
           If you had the opportunity to invest in yourself, take a productive break, and immerse yourself in a room filled with high-level founders and C-suite executives, how much would that be worth? Surely, $5,000 wouldn't be too much for such a life-changing experience.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           <PricingOption 
             title="Economy (Early Bird)" 
             price="7000" 
