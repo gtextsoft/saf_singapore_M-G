@@ -46,7 +46,7 @@ const HeroSection = () => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 animate-fade-in">
           <div className="flex items-center space-x-2 text-gold-light">
             <Calendar className="w-5 h-5" />
-            <span className="text-sm font-medium">22nd to 25th September</span>
+            <span className="text-sm font-medium">28th November to 4th December 2025</span>
           </div>
           <div className="flex items-center space-x-2 text-gold-light">
             <MapPin className="w-5 h-5" />
