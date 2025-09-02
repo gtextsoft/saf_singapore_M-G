@@ -1,8 +1,12 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, XCircle, AlertTriangle, Zap, Users, Star } from "lucide-react";
+import { useState } from "react";
+import TicketFormModal from "./TicketFormModal";
 
 const CallToActionSection = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div className="bg-gradient-to-br from-navy via-navy-light to-navy-dark text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -109,7 +113,10 @@ const CallToActionSection = () => {
               ))}
             </ol>
             
-            <Button className="btn-primary text-xl px-10 py-5 group">
+            <Button 
+              onClick={() => setIsFormOpen(true)}
+              className="btn-primary text-xl px-10 py-5 group"
+            >
               CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
               <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" />
             </Button>
@@ -149,6 +156,8 @@ const CallToActionSection = () => {
           </div>
         </div>
       </div>
+      
+      <TicketFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </div>
   );
 };

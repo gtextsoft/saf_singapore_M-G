@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import TicketFormModal from "./TicketFormModal";
 
-const PricingOption = ({ title, price, discountPrice, features, isPopular = false }: { 
+const PricingOption = ({ title, price, discountPrice, features, isPopular = false, onClaimSeat }: { 
   title: string; 
   price: string; 
   discountPrice?: string; 
   features: string[];
-  isPopular?: boolean; 
+  isPopular?: boolean;
+  onClaimSeat: () => void;
 }) => {
   return (
     <div className={`bg-white rounded-lg shadow-lg overflow-hidden border ${isPopular ? 'border-gold' : 'border-gray-200'}`}>
@@ -35,17 +38,20 @@ const PricingOption = ({ title, price, discountPrice, features, isPopular = fals
             </li>
           ))}
         </ul>
-        <a href="https://pay.gtextglobal.com/singapore-retreat-for/" target="_blank" rel="noopener noreferrer">
-          <Button className={`w-full ${isPopular ? 'btn-primary' : 'bg-navy text-white hover:bg-navy-light'}`}>
-            CLAIM MY SEAT
-          </Button>
-        </a>
+        <Button 
+          onClick={onClaimSeat}
+          className={`w-full ${isPopular ? 'btn-primary' : 'bg-navy text-white hover:bg-navy-light'}`}
+        >
+          CLAIM MY SEAT
+        </Button>
       </div>
     </div>
   );
 };
 
 const PricingSection = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div className="bg-gray-50">
       <div className="section-container">
@@ -62,6 +68,7 @@ const PricingSection = () => {
             price="7000" 
             discountPrice="5000"
             isPopular={true}
+            onClaimSeat={() => setIsFormOpen(true)}
             features={[
               "Premium accommodation in Singapore",
               "All meals included",
@@ -75,6 +82,7 @@ const PricingSection = () => {
           <PricingOption 
             title="Economy (Regular)" 
             price="7000" 
+            onClaimSeat={() => setIsFormOpen(true)}
             features={[
               "Premium accommodation in Singapore",
               "All meals included",
@@ -89,6 +97,7 @@ const PricingSection = () => {
             title="Business Class (Early Bird)" 
             price="15000" 
             discountPrice="12000"
+            onClaimSeat={() => setIsFormOpen(true)}
             features={[
               "Business Class accommodation in Singapore",
               "All meals included",
@@ -102,6 +111,7 @@ const PricingSection = () => {
           <PricingOption 
             title="Business Class (Regular)" 
             price="15000" 
+            onClaimSeat={() => setIsFormOpen(true)}
             features={[
               "Business Class accommodation in Singapore",
               "All meals included",
@@ -119,13 +129,16 @@ const PricingSection = () => {
             Early Bird registration ends July 30th, 2025. Entire event registration closes September 25th, 2025.<br/>
             Thousands of people will see this daily, and spots will fill up fast!
           </p>
-          <a href="https://pay.gtextglobal.com/singapore-retreat-for/" target="_blank" rel="noopener noreferrer">
-            <Button className="btn-primary text-lg">
-              CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
-            </Button>
-          </a>
+          <Button 
+            onClick={() => setIsFormOpen(true)}
+            className="btn-primary text-lg"
+          >
+            CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
+          </Button>
         </div>
       </div>
+      
+      <TicketFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </div>
   );
 };

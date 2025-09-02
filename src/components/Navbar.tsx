@@ -1,10 +1,13 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PricingSection from "./PricingSection";
+import TicketFormModal from "./TicketFormModal";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,18 +65,30 @@ const Navbar = () => {
               About Host
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#pricing" className="btn-primary text-sm px-6 py-2.5">
+            <Link to="/past-events" className="text-white hover:text-gold transition-all duration-300 relative group">
+              Past Events
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            <Button 
+              onClick={() => setIsFormOpen(true)}
+              className="btn-primary text-sm px-6 py-2.5"
+            >
               CLAIM MY SEAT
-            </a>
+            </Button>
           </div>
           
           <div className="md:hidden">
-            <Button className="bg-gold hover:bg-gold-dark text-navy-dark px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button 
+              onClick={() => setIsFormOpen(true)}
+              className="bg-gold hover:bg-gold-dark text-navy-dark px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
               CLAIM MY SEAT
             </Button>
           </div>
         </div>
       </div>
+      
+      <TicketFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </nav>
   );
 };

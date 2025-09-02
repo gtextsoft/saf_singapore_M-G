@@ -1,8 +1,12 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Calendar, MapPin, Users } from "lucide-react";
+import { useState } from "react";
+import TicketFormModal from "./TicketFormModal";
 
 const HeroSection = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <div className="relative bg-gradient-to-br from-navy via-navy-light to-navy-dark text-white overflow-hidden">
       {/* Background Pattern */}
@@ -38,7 +42,10 @@ const HeroSection = () => {
         </div>
         
         {/* Enhanced CTA Button */}
-        <Button className="btn-primary text-lg px-8 py-4 text-lg animate-fade-in shadow-2xl hover:shadow-gold/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+        <Button 
+          onClick={() => setIsFormOpen(true)}
+          className="btn-primary text-lg px-8 py-4 text-lg animate-fade-in shadow-2xl hover:shadow-gold/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+        >
           CLAIM MY SEAT NOW
         </Button>
         
@@ -59,6 +66,8 @@ const HeroSection = () => {
           <ArrowDown className="w-6 h-6 text-gold-light" />
         </div>
       </div>
+      
+      <TicketFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </div>
   );
 };
