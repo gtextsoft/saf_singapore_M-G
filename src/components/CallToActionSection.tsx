@@ -69,7 +69,7 @@ const CallToActionSection = () => {
                   <div>
                     <span className="font-bold text-green-400 text-lg">Option C:</span>
                     <p className="text-lg leading-relaxed mt-2">
-                      Spend 28th November to 4th December 2025 in Singapore with Dr. Stephen Akintayo and Dr. Cosmos Maduka in an intimate retreat setting and return with:
+                      Spend 22nd to 25th September with Dr. Stephen Akintayo and Dr. Cosmos Maduka in an intimate retreat setting and return with:
                     </p>
                     <ul className="mt-4 ml-6 space-y-2">
                       <li className="flex items-center">
