@@ -37,7 +37,6 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
     hiddenForm.action = 'https://app.mailingboss.com/lists/68b6ad768df66/subscribe';
     hiddenForm.target = '_blank';
     hiddenForm.style.display = 'none';
-    
     // Add form fields
     const fields = ['EMAIL', 'FNAME', 'PHONEPREFIX', 'PHONE', 'COUNTRY'];
     fields.forEach(field => {
