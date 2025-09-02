@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { X, CheckCircle, ArrowRight } from "lucide-react";
+import { X } from "lucide-react";
 
 interface TicketFormModalProps {
   isOpen: boolean;
@@ -19,8 +19,7 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
     PHONE: "",
     COUNTRY: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -31,9 +30,8 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Create a hidden form and submit it
+    // Create a hidden form and submit to MailingBoss
     const hiddenForm = document.createElement('form');
     hiddenForm.method = 'POST';
     hiddenForm.action = 'https://app.mailingboss.com/lists/68b6ad768df66/subscribe';
@@ -50,21 +48,13 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
       hiddenForm.appendChild(input);
     });
     
-    // Append to body and submit
+    // Submit to MailingBoss
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
-    
-    // Clean up
     document.body.removeChild(hiddenForm);
     
-    // Show success message and redirect
-    setShowSuccess(true);
-    setIsSubmitting(false);
-    
-    // Redirect to payment page after 2 seconds
-    setTimeout(() => {
-      window.location.href = "https://pay.gtextglobal.com/singapore-retreat-for/";
-    }, 2000);
+    // Redirect to payment page
+    window.location.href = "https://pay.gtextglobal.com/singapore-retreat-for/";
   };
 
   const phonePrefixOptions = [
@@ -287,102 +277,73 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] bg-white border-0 shadow-2xl">
-        <DialogHeader className="relative">
-          <DialogTitle className="text-2xl font-serif font-bold text-navy text-center">
+      <DialogContent className="w-[95vw] max-w-[500px] max-h-[90vh] overflow-y-auto bg-white border-0 shadow-2xl mx-4 sm:mx-auto">
+        <DialogHeader className="relative px-4 sm:px-6 pt-4 sm:pt-6">
+          <DialogTitle className="text-xl sm:text-2xl font-serif font-bold text-navy text-center pr-8">
             Claim Your Seat
           </DialogTitle>
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-0 top-0 h-6 w-6 text-gray-500 hover:text-gray-700"
+            className="absolute right-2 top-2 sm:right-4 sm:top-4 h-8 w-8 sm:h-6 sm:w-6 text-gray-500 hover:text-gray-700"
             onClick={onClose}
           >
             <X className="h-4 w-4" />
           </Button>
         </DialogHeader>
         
-        {showSuccess ? (
-          <div className="text-center py-8">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-navy mb-2">Success!</h3>
-              <p className="text-gray-600 mb-4">
-                Your information has been submitted successfully. You're now being redirected to complete your registration.
-              </p>
-            </div>
-            
-            <div className="bg-gold/10 border border-gold/20 rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-center text-gold">
-                <ArrowRight className="w-5 h-5 mr-2 animate-pulse" />
-                <span className="font-semibold">Redirecting to payment page...</span>
-              </div>
-            </div>
-            
-            <p className="text-sm text-gray-500">
-              If you're not redirected automatically, 
-              <a 
-                href="https://pay.gtextglobal.com/singapore-retreat-for/" 
-                className="text-gold hover:text-gold-dark font-semibold ml-1"
-              >
-                click here
-              </a>
-            </p>
-          </div>
-        ) : (
+
           <form 
             onSubmit={handleSubmit}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 px-4 sm:px-6 pb-4 sm:pb-6"
           >
           <div className="space-y-2">
-            <Label htmlFor="EMAIL" className="text-navy font-semibold">
-              Email Address *
+            <Label htmlFor="EMAIL" className="text-sm sm:text-base text-navy font-semibold">
+              E-mail
             </Label>
             <Input
               id="EMAIL"
               name="EMAIL"
               type="email"
-              placeholder="Enter your email address"
+              placeholder="E-mail"
               value={formData.EMAIL}
               onChange={(e) => handleInputChange("EMAIL", e.target.value)}
               required
-              className="border-gray-300 focus:border-gold focus:ring-gold"
+              className="h-10 sm:h-11 text-sm sm:text-base border-gray-300 focus:border-gold focus:ring-gold"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="FNAME" className="text-navy font-semibold">
-              Full Name *
+            <Label htmlFor="FNAME" className="text-sm sm:text-base text-navy font-semibold">
+              Name
             </Label>
             <Input
               id="FNAME"
               name="FNAME"
               type="text"
-              placeholder="Enter your full name"
+              placeholder="Name"
               value={formData.FNAME}
               onChange={(e) => handleInputChange("FNAME", e.target.value)}
               required
-              className="border-gray-300 focus:border-gold focus:ring-gold"
+              className="h-10 sm:h-11 text-sm sm:text-base border-gray-300 focus:border-gold focus:ring-gold"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="PHONEPREFIX" className="text-navy font-semibold">
-              Phone Prefix *
+            <Label htmlFor="PHONEPREFIX" className="text-sm sm:text-base text-navy font-semibold">
+              Phone Prefix
             </Label>
             <Select
               value={formData.PHONEPREFIX}
               onValueChange={(value) => handleInputChange("PHONEPREFIX", value)}
               required
             >
-              <SelectTrigger className="border-gray-300 focus:border-gold focus:ring-gold">
+              <SelectTrigger className="h-10 sm:h-11 text-sm sm:text-base border-gray-300 focus:border-gold focus:ring-gold">
                 <SelectValue placeholder="Select your country code" />
               </SelectTrigger>
-              <SelectContent className="max-h-60">
+              <SelectContent className="max-h-48 sm:max-h-60">
                 {phonePrefixOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem key={option.value} value={option.value} className="text-sm sm:text-base">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -391,46 +352,44 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="PHONE" className="text-navy font-semibold">
-              Phone Number *
+            <Label htmlFor="PHONE" className="text-sm sm:text-base text-navy font-semibold">
+              Phone
             </Label>
             <Input
               id="PHONE"
               name="PHONE"
               type="text"
-              placeholder="Enter your phone number"
+              placeholder="Phone"
               value={formData.PHONE}
               onChange={(e) => handleInputChange("PHONE", e.target.value)}
               required
-              className="border-gray-300 focus:border-gold focus:ring-gold"
+              className="h-10 sm:h-11 text-sm sm:text-base border-gray-300 focus:border-gold focus:ring-gold"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="COUNTRY" className="text-navy font-semibold">
-              Country *
+            <Label htmlFor="COUNTRY" className="text-sm sm:text-base text-navy font-semibold">
+              COUNTRY
             </Label>
             <Input
               id="COUNTRY"
               name="COUNTRY"
               type="text"
-              placeholder="Enter your country"
+              placeholder="Country"
               value={formData.COUNTRY}
               onChange={(e) => handleInputChange("COUNTRY", e.target.value)}
               required
-              className="border-gray-300 focus:border-gold focus:ring-gold"
+              className="h-10 sm:h-11 text-sm sm:text-base border-gray-300 focus:border-gold focus:ring-gold"
             />
           </div>
 
           <Button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-gold hover:bg-gold-dark text-navy-dark font-bold py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-gold hover:bg-gold-dark text-navy-dark font-bold py-3 sm:py-4 text-sm sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            {isSubmitting ? "Processing..." : "Subscribe & Claim My Seat"}
+            Subscribe
           </Button>
         </form>
-        )}
       </DialogContent>
     </Dialog>
   );
