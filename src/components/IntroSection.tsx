@@ -45,7 +45,7 @@ const IntroSection = () => {
             
             <div className="text-center">
               <p className="text-lg font-medium text-navy-light leading-relaxed">
-                This is exactly what you'll get at the Singapore Tourism 2025 retreat, curated by Dr. Stephen Akintayo, Africa's foremost investment coach.
+                This is exactly what you'll get at the Founders' Retreat Singapore 2025, curated by Dr. Stephen Akintayo, Africa's foremost investment coach.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ const IntroSection = () => {
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-8">
                 <Award className="w-10 h-10 text-gold mr-4" />
-                <h3 className="text-2xl md:text-3xl font-bold">What Makes This Retreat Different From Any Other Leadership Event?</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">What Makes This Founders' Retreat Different From Any Other Leadership Event?</h3>
               </div>
               
               <ul className="space-y-4 mb-8 max-w-3xl mx-auto">

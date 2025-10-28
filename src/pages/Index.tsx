@@ -25,7 +25,7 @@ const Index = () => {
     }
     
     // Update document title
-    document.title = "Singapore Tourism 2025";
+    document.title = "Founders' Retreat Singapore 2025";
   }, []);
 
   const handleLoadingComplete = () => {

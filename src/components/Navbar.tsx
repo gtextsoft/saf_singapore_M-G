@@ -44,7 +44,7 @@ const Navbar = () => {
               <div className="absolute inset-0 rounded-full bg-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <span className="text-white font-serif font-bold text-xl group-hover:text-gold transition-colors duration-300">
-              Singapore Tourism 2025
+              Founders' Retreat Singapore
             </span>
           </div>
           

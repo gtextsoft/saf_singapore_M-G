@@ -17,12 +17,12 @@ const HeroSection = () => {
       <div className="section-container relative z-10 flex flex-col items-center justify-center text-center min-h-screen">
         {/* Main Title with Enhanced Typography */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight animate-fade-in bg-gradient-to-r from-white via-gold-light to-white bg-clip-text text-transparent">
-          Singapore Tourism
+          Founders' Retreat
         </h1>
         
         {/* Subtitle with Better Contrast */}
         <h2 className="text-xl md:text-2xl lg:text-3xl mb-8 text-gold animate-fade-in font-medium leading-relaxed max-w-4xl">
-          Where Visionary Leaders Recharge, Network, and Scale Beyond Borders
+          Singapore - Where Visionary Leaders Recharge, Network, and Scale Beyond Borders
         </h2>
         
         {/* Tagline with Enhanced Styling */}
@@ -53,7 +53,7 @@ const HeroSection = () => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 animate-fade-in">
           <div className="flex items-center space-x-2 text-gold-light">
             <Calendar className="w-5 h-5" />
-            <span className="text-sm font-medium">28th November to 4th December 2025</span>
+            <span className="text-sm font-medium">28th November - 4th December 2025</span>
           </div>
           <div className="flex items-center space-x-2 text-gold-light">
             <MapPin className="w-5 h-5" />
