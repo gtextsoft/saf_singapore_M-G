@@ -53,7 +53,7 @@ const TicketFormModal = ({ isOpen, onClose }: TicketFormModalProps) => {
     document.body.removeChild(hiddenForm);
     
     // Redirect to payment page
-    window.location.href = "https://pay.gtextglobal.com/singapore-retreat-for/";
+    window.location.href = "https://pay.gtextglobal.com/virtual-to-the-singapore-retreat/";
   };
 
   const phonePrefixOptions = [
