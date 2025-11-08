@@ -2,12 +2,18 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PricingSection from "./PricingSection";
-import TicketFormModal from "./TicketFormModal";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigationLinks = [
+    { label: "Benefits", href: "#benefits" },
+    { label: "Speakers", href: "#speakers" },
+    { label: "Business Lessons", href: "#lessons" },
+    { label: "About Host", href: "#about" },
+    { label: "Past Events", href: "/past-events", isRoute: true },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +29,23 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleNavLinkClick = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav 
@@ -49,46 +72,107 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#benefits" className="text-white hover:text-gold transition-all duration-300 relative group">
-              Benefits
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#speakers" className="text-white hover:text-gold transition-all duration-300 relative group">
-              Speakers
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#lessons" className="text-white hover:text-gold transition-all duration-300 relative group">
-              Business Lessons
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#about" className="text-white hover:text-gold transition-all duration-300 relative group">
-              About Host
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <Link to="/past-events" className="text-white hover:text-gold transition-all duration-300 relative group">
-              Past Events
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
-            </Link>
+            {navigationLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-white hover:text-gold transition-all duration-300 relative group"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-white hover:text-gold transition-all duration-300 relative group"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+              )
+            )}
             <Button 
-              onClick={() => setIsFormOpen(true)}
+              asChild
               className="btn-primary text-sm px-6 py-2.5"
             >
-              CLAIM MY SEAT
+              <a href="#tickets">CLAIM MY SEAT</a>
             </Button>
           </div>
           
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className={`flex h-11 w-11 flex-col items-center justify-center space-y-1.5 rounded-lg border border-gold/40 text-white hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold`}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+            >
+              <span
+                className={`block h-0.5 w-6 rounded-sm bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "translate-y-2 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 rounded-sm bg-current transition-opacity duration-200 ${
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 rounded-sm bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
+              />
+            </button>
             <Button 
-              onClick={() => setIsFormOpen(true)}
+              asChild
               className="bg-gold hover:bg-gold-dark text-navy-dark px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              CLAIM MY SEAT
+              <a href="#tickets">CLAIM MY SEAT</a>
             </Button>
           </div>
         </div>
       </div>
-      
-      <TicketFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      <div
+        id="mobile-navigation"
+        className={`md:hidden transition-all duration-300 ${
+          isMenuOpen ? "max-h-screen" : "max-h-0 overflow-hidden"
+        }`}
+      >
+        <div className="space-y-4 bg-navy/90 px-4 pb-6 pt-4 shadow-inner backdrop-blur">
+          {navigationLinks.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={handleNavLinkClick}
+                className="block text-base font-medium text-white transition-colors hover:text-gold"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={handleNavLinkClick}
+                className="block text-base font-medium text-white transition-colors hover:text-gold"
+              >
+                {link.label}
+              </a>
+            )
+          )}
+          <Button
+            asChild
+            className="w-full btn-primary text-base py-3"
+          >
+            <a href="#tickets" onClick={handleNavLinkClick}>
+              CLAIM MY SEAT
+            </a>
+          </Button>
+        </div>
+      </div>
     </nav>
   );
 };
