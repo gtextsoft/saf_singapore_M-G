@@ -132,7 +132,7 @@ const PricingSection = () => {
             asChild
             className="btn-primary text-lg"
           >
-            <a href="https://app.mailingboss.com/lists/68b6ad768df66/subscribe" target="_blank" rel="noopener noreferrer">
+            <a href="https://pay.gtextglobal.com/virtual-to-the-singapore-retreat/" target="_blank" rel="noopener noreferrer">
               CLAIM MY SEAT NOW BEFORE PRICES INCREASE!
             </a>
           </Button>
