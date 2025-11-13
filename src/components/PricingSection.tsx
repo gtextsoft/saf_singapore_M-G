@@ -75,7 +75,7 @@ const PricingSection = () => {
           If you had the opportunity to invest in yourself, take a productive break, and immerse yourself in a room filled with high-level founders and C-suite executives, how much would that be worth? Surely, $5,000 wouldn't be too much for such a life-changing experience.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           <PricingOption 
             title="Economy (Early Bird)" 
             price="7000" 
@@ -105,6 +105,21 @@ const PricingSection = () => {
               "Exclusive networking opportunities",
               "VIP action plan to scale your business",
               "Early Bird registration closes July 30th, 2025"
+            ]}
+          />
+          <PricingOption 
+            title="Self-Travel Ticket" 
+            price="2000" 
+            ctaHref="https://pay.gtextglobal.com/virtual-to-the-singapore-retreat-copy-2/"
+            isPopular={true}
+            features={[
+              "Access to all workshops",
+              "Personal business assessment",
+              "Networking opportunities",
+              "Action plan to scale your business",
+              "For visa-free travelers only",
+              "You arrange your own travel & accommodation",
+              "Perfect for those who can travel independently"
             ]}
           />
           <PricingOption 
